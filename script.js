@@ -15,17 +15,19 @@ function getComputerChoice () {
 
 //Create function that will ask for the player choice
 function getPlayerChoice () {
-    const playerChoice = prompt("Make your choice: Rock, Paper or Scissors", "");
-    return playerChoice;    
 
+    const playerInput = prompt("Make your choice: Rock, Paper or Scissors", "")  
+    const playerInputLowC = (playerInput.slice(1)).toLowerCase();
+    const playerChoice = playerInput[0].toUpperCase() + playerInputLowC;
+
+        return playerChoice;
 }
-
 
     
 //Create function to start a game and compare the computer seelction with the player selection
-function gameStart (playerSelection, computerSelection) {
+function gameStart (playerSelection, computerSelection) {    
     
-    if (playerSelection === "Rock" || && computerSelection === "Paper" ||
+    if (playerSelection === "Rock" && computerSelection === "Paper" ||
         playerSelection === "Paper" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Rock" ) {
             return `Computer Choice: ${computerSelection}, Your choice is: ${playerSelection}, You Lost!`;
