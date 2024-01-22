@@ -13,7 +13,7 @@ function getComputerChoice () {
     
 }
 
-//Create function that will ask for the player choice
+//Create function that will ask for the player choice (Case Sensitive)
 function getPlayerChoice () {
 
     const playerInput = prompt("Make your choice: Rock, Paper or Scissors", "")  
@@ -23,21 +23,51 @@ function getPlayerChoice () {
         return playerChoice;
 }
 
+
     
 //Create function to start a game and compare the computer seelction with the player selection
-function gameStart (playerSelection, computerSelection) {    
+function playRound (playerSelection, computerSelection) {  
+
+    let playerScore = 0;
+    let playerWin = playerScore + 1;
+    let computerScore = 0;
+    let computerWin = ++computerScore; 
+      
     
     if (playerSelection === "Rock" && computerSelection === "Paper" ||
         playerSelection === "Paper" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Rock" ) {
-            return `Computer Choice: ${computerSelection}, Your choice is: ${playerSelection}, You Lost!`;
+            return `Computer Choice: ${computerSelection}, Your choice is: ${playerSelection}, You Lost! \n
+            Computer Score : ${computerWin}`;            
+
     } else if (playerSelection === computerSelection ) {        
-        return `It\'s a tie! Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection}`;        
+        return `It\'s a tie! Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection}`; 
+
     } else {
         return `Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection} You Won!`;
+        
     }
 }
-console.log(gameStart(getPlayerChoice(), getComputerChoice()))
+
+//Create function to play severeal rounds based on a loop
+function game () {
+    for (let i=0; i<10; i++)
+    console.log(playRound("Rock", "Paper"));    
+
+} 
+game();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,9 +80,5 @@ console.log(gameStart(getPlayerChoice(), getComputerChoice()))
 
 
 /* 
-create variables for rock, paper, and scissors
-create a variable for rounds ( add +1 for every round played, till 3 rounds )
-prompt a message to ask for my choice
-put my choice in the variable
-create function for computer choice and compare it with my choice ( add messages for every round lost or won or tie)
+Play the round 1, adds 1 to ties
 */
