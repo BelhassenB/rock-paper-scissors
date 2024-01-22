@@ -57,29 +57,3 @@ function game () {
 
 } 
 game();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-Play the round 1, adds 1 to ties
-*/
