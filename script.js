@@ -23,36 +23,37 @@ function getPlayerChoice () {
         return playerChoice;
 }
 
+let playerScore = 0;
+let computerScore = 0;
 
     
 //Create function to start a game and compare the computer seelction with the player selection
-function playRound (playerSelection, computerSelection) {  
-
-    let playerScore = 0;
-    let playerWin = playerScore + 1;
-    let computerScore = 0;
-    let computerWin = ++computerScore; 
-      
+function playRound (playerSelection, computerSelection) {       
     
     if (playerSelection === "Rock" && computerSelection === "Paper" ||
         playerSelection === "Paper" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Rock" ) {
-            return `Computer Choice: ${computerSelection}, Your choice is: ${playerSelection}, You Lost! \n
-            Computer Score : ${computerWin}`;            
+            computerScore++; return `Computer Choice: ${computerSelection}, Your choice is: ${playerSelection}, You Lost!\n
+            Computer Score: ${computerScore}`           
 
     } else if (playerSelection === computerSelection ) {        
         return `It\'s a tie! Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection}`; 
 
     } else {
-        return `Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection} You Won!`;
+        playerScore++; return `Computer Choice is: ${computerSelection}, Your choice is: ${playerSelection} You Won! \n
+        Player Score: ${playerScore}`;
         
     }
 }
 
 //Create function to play severeal rounds based on a loop
-function game () {
-    for (let i=0; i<10; i++)
-    console.log(playRound("Rock", "Paper"));    
+function game () {    
+
+    for (let i=0; i < 5; i++) 
+    console.log(playRound(getPlayerChoice(),getComputerChoice()));
+
+    let finalScore = (playerScore > computerScore)? `You won: ${playerScore} to ${computerScore}`: `You lost: ${playerScore} to ${computerScore}`
+    alert(finalScore);
 
 } 
 game();
